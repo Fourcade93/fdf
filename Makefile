@@ -1,4 +1,5 @@
-SRC := main.c
+SRC := main.c error_fnc.c put_pixels.c valid_input.c events.c map_mod.c \
+wind_mod.c
 SRC := $(addprefix src/, $(SRC))
 OBJ := $(SRC:.c=.o)
 INC_DIR = includes/
