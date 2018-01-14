@@ -3,7 +3,6 @@ wind_mod.c
 SRC := $(addprefix src/, $(SRC))
 OBJ := $(SRC:.c=.o)
 INC_DIR = includes/
-MLX_DIR = minilibx_macos/
 LIB_DIR = libft/
 LIB_INC_DIR = $(LIB_DIR)$(INC_DIR)
 CC = gcc
@@ -21,7 +20,7 @@ $(NAME): $(OBJ)
 	@echo "Create $(NAME)"
 
 %.o: %.c
-	@$(CC) $(FLAGS) -c -o $@ $< -I$(LIB_INC_DIR) -I$(INC_DIR) -I$(MLX_DIR)
+	@$(CC) $(FLAGS) -c -o $@ $< -I$(LIB_INC_DIR) -I$(INC_DIR)
 
 clean:
 	@/bin/rm -f $(OBJ)

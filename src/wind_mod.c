@@ -6,7 +6,7 @@
 /*   By: fmallaba <fmallaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/14 04:48:40 by fmallaba          #+#    #+#             */
-/*   Updated: 2018/01/14 05:53:11 by fmallaba         ###   ########.fr       */
+/*   Updated: 2018/01/14 09:04:01 by fmallaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,15 @@ void	print_pic(t_coord **map, int x)
 	t_mlx	mlx;
 	int		width;
 	int		height;
+	t_all	all;
 
+	all.map = map;
+	all.x = x;
 	get_win_size(&width, &height, map, x);
 	mlx = call_wind(width, height);
+	all.mlx = mlx;
 	put_pixels(map, x, mlx);
-	mlx_key_hook(mlx.wind, event_hook, NULL);
+	mlx_key_hook(mlx.wind, event_hook, &all);
 	mlx_hook(mlx.wind, 17, 1L << 17, exit_x, NULL);
 	mlx_loop(mlx.mlx);
 }

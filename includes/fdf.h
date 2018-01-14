@@ -6,7 +6,7 @@
 /*   By: fmallaba <fmallaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 13:30:20 by fmallaba          #+#    #+#             */
-/*   Updated: 2018/01/14 06:06:16 by fmallaba         ###   ########.fr       */
+/*   Updated: 2018/01/14 09:04:16 by fmallaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 # define USAGE "usage: fdf [file name] [chain_width] [height]\n"
 # define FILE_ERROR "Incorrect file!\n"
+# define INCR -0.5235987755983
+# define DECR 0.5235987755983
 # define ABS(x) ((x < 0) ? -x : x)
 
 typedef struct	s_coord
@@ -55,11 +57,18 @@ typedef struct	s_size
 	int			o_z;
 }				t_size;
 
+typedef struct	s_all
+{
+	t_mlx		mlx;
+	t_coord		**map;
+	int			x;
+}				t_all;
+
 void			error_fnc(t_dlist *list, t_coord **map, int end);
 t_coord			**init_map(t_dlist *list, int *x);
 void			put_pixels(t_coord **map, int x, t_mlx mlx);
 int				exit_x(void *par);
-int				event_hook(int key, t_mlx mlx);
+int				event_hook(int key, t_all *all);
 void			rotate_map_z(t_coord **map, int x, long double deg);
 void			rotate_map_x(t_coord **map, int x, long double deg);
 void			shift_fig(t_coord **map, int x);
